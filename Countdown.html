@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时</title>
+	<style>
+		#box{
+				width: 300px;
+				height: 50px;
+				margin: 0 auto;
+				line-height: 50px;
+				text-align: center;
+			}
+			span{
+				color: red;
+			}
+
+    </style>
+</head>
+<body>
+	<div id="box"></div>
+
+
+	<button id="pause">暂停</button>
+	<button id="get">开始</button>
+
+	<script>
+		var shijian;
+		function jj(){
+shijian=setInterval(function(){
+				var oBox=document.getElementById('box');
+				var dat=new Date();
+				var dat1=new Date('1/1/2018');
+				var shijian=dat1-dat;
+				var miao=shijian/1000;
+				
+				
+				var tian=parseInt(miao/60/60/24);
+				var shi=parseInt(miao%(60*60*24)/60/60);
+				var fen=parseInt(miao%(60*60)/60);
+				var mia=parseInt(miao%60);
+				
+				oBox.innerHTML='距离元旦还有：'+'<span>'+tian+'</span>'+'天'+'<span>'+shi+'</span>'+'时'+'<span>'+fen+'</span>'+'分'+'<span>'+mia+'</span>'+'秒';
+			},1000)
+
+		}
+		jj()
+
+
+			pause.onclick=function(){
+
+				clearInterval(shijian)
+				shijian = undefined
+			}
+
+			get.onclick=function(){
+				if (shijian==undefined) {
+					jj()
+				}
+				
+			}
+
+
+
+		</script>
+
+</body>
+</html>
